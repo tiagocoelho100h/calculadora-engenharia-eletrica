@@ -1,0 +1,23 @@
+<script>
+    function calcularCorrenteMotor() {
+        var potenciaCV = document.getElementById('potenciaCV').value
+        var tensaoPlacaMotor = document.getElementById('tensaoPlacaMotor').value
+
+        var correnteNominal = (potenciaCV * 736) / (tensaoPlacaMotor * 1.73)
+
+        document.getElementById('resultado').value = correnteNominal
+    }
+</script>
+
+<div>
+    <label for="potenciaCV">Potencia Nominal (CV):</label>
+    <input type="number" name="potenciaCV" id="potenciaCV">
+
+    <label for="tensaoPlacaMotor">Tensão Nominal (V)</label>
+    <input type="number" name="tensaoPlacaMotor" id="tensaoPlacaMotor">
+
+    <input type="button" value="Calcular" onclick="calcularCorrenteMotor()">
+
+    <label for="resultado">Corrente Nominal (A)</label>
+    <input type="text" name="resultado" id="resultado">
+</div>
