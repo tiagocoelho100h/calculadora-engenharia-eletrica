@@ -1,0 +1,53 @@
+<script>
+    function convertePotencia() {
+        var potenciaEntrada = document.getElementById('potenciaEntrada').value
+        var modoEntrada = document.getElementById('modoEntrada').value
+        var modoSaida = document.getElementById('modoSaida').value
+
+        if ((modoEntrada == 'cv' & modoSaida == 'cv') || (modoEntrada == 'hp' & modoSaida == 'hp') || (modoEntrada == 'kw' & modoSaida == 'kw')) {
+            var potenciaSaida = potenciaEntrada
+        }
+        else if (modoEntrada == 'cv' & modoSaida == 'hp'){
+            var potenciaSaida = potenciaEntrada * 0.98632
+        }
+        else if (modoEntrada == 'cv' & modoSaida == 'kw') {
+            var potenciaSaida = (potenciaEntrada * 736) / 1000
+        }
+        else if (modoEntrada == 'hp' & modoSaida == 'cv') {
+            var potenciaSaida = potenciaEntrada * 1.01387
+        }
+        else if (modoEntrada == 'hp' & modoSaida == 'kw') {
+            var potenciaSaida = (potenciaEntrada * 746) / 1000
+        }
+        else if (modoEntrada == 'kw' & modoSaida == 'cv') {
+            var potenciaSaida = (potenciaEntrada * 1000) / 736
+        }
+        else if (modoEntrada == 'kw' & modoSaida == 'hp') {
+            var potenciaSaida = (potenciaEntrada * 1000) / 746
+        }
+        else {
+            alert('Error 1')
+        }
+
+
+        document.getElementById('potenciaSaida').value = potenciaSaida
+    }
+</script>
+
+<div>
+    <label for="potenciaEntrada">Potencia Entrada:</label>
+    <input type="text" name="potenciaEntrada" id="potenciaEntrada">
+    <select name="" id="modoEntrada">
+        <option value="cv">CV</option>
+        <option value="hp">HP</option>
+        <option value="kw">Kw</option>
+    </select>
+    <label for="potenciaSaida">Potencia Convertida:</label>
+    <input type="text" name="potenciaSaida" id="potenciaSaida">
+    <select name="" id="modoSaida">
+        <option value="cv">CV</option>
+        <option value="hp">HP</option>
+        <option value="kw">Kw</option>
+    </select>
+    <button onclick="convertePotencia()">Calcular</button>
+</div>
