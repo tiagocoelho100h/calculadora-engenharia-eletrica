@@ -1,52 +1,73 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
-.container {
-    background-color: #ffffff;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 65px 100vh 100vh 65px;
-    grid-template-areas: 
-        "header"
-        "main"
-        "aside"
-        "footer";
-}
-
-.container-center {
-    margin: auto;
-    width: 1280px;
-}
-
-.container > header {
-    position: fixed;
-    height: 65px;
+#container {
+    height: 100%;
     width: 100vw;
-    top: 0px;
-    background-color: #ffffff;
-    border-bottom: solid #222f3e 4px;
-    box-shadow: 0px 5px 10px #00000022;
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr;
+    grid-template-rows: 65px 1fr 1fr 50px;
+    grid-template-areas:
+        "navbar navbar navbar navbar"
+        "sidebar main main main"
+        "sidebar content-1 content-2 content-3"
+        "footer footer footer footer";
+    grid-gap: 5px;
 }
 
-.container > header > div {
-    display: flex;
-    justify-content: space-between;
+#navbar {
+    background-color: #00f0f0;
+    grid-area: navbar;
 }
 
-.container > main {
-    background-color: #ffffff;
+#sidebar {
+    background-color: #00e0e0;
+    grid-area: sidebar;
+}
+
+#main {
+    background-color: #00d0d0;
     grid-area: main;
+    min-height: 500px;
 }
 
-.container > aside {
-    background-color: #576574;
-    grid-area: aside;
+.content {
+    background-color: #00c0c0;
+    min-height: 300px; /*jogar esta linha para seletor responsivo*/
 }
 
-.container > footer {
-    background-color: #ffffff;
+#content-1 {
+    grid-area: content-1;
+}
+
+#content-2 {
+    grid-area: content-2;
+}
+
+#content-3 {
+    grid-area: content-3;
+}
+
+#footer {
+    background-color: #00b0b0;
     grid-area: footer;
+}
+
+
+@media(max-width: 800px) {
+    #container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 65px 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+        grid-template-areas:
+            "navbar"
+            "main"
+            "sidebar"
+            "content-1"
+            "content-2"
+            "content-3"
+            "footer";
+    }
 }
